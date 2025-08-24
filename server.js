@@ -3,7 +3,6 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
-const cron = require('node-cron');
 
 const connectDB = require('./config/db');  
 const routes = require('./routes');
