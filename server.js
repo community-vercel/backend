@@ -7,7 +7,6 @@ const cron = require('node-cron');
 
 const connectDB = require('./config/db');  
 const routes = require('./routes');
-const { updateOverdueTodos } = require('./utils/scheduledTasks');
 
 const app = express();
 
