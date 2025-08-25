@@ -1,4 +1,3 @@
-// models/Issue.js
 const mongoose = require('mongoose');
 
 const issueSchema = new mongoose.Schema({
@@ -47,7 +46,6 @@ const issueSchema = new mongoose.Schema({
   timestamps: true
 });
 
-// Update the updatedAt field before saving
 issueSchema.pre('save', function(next) {
   this.updatedAt = Date.now();
   if (this.status === 'resolved' && !this.resolvedAt) {

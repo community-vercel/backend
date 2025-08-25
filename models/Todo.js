@@ -1,5 +1,4 @@
  
-// models/ToDo.js
 const mongoose = require('mongoose');
 
 const todoSchema = new mongoose.Schema({
@@ -51,7 +50,6 @@ const todoSchema = new mongoose.Schema({
   timestamps: true
 });
 
-// Auto-mark as late if overdue
 todoSchema.pre('save', function(next) {
   this.updatedAt = Date.now();
   
@@ -59,7 +57,6 @@ todoSchema.pre('save', function(next) {
     this.completedAt = Date.now();
   }
   
-  // Check if overdue and not completed
   if (this.status === 'pending' && new Date() > this.dueDate) {
     this.status = 'late';
   }
@@ -67,7 +64,6 @@ todoSchema.pre('save', function(next) {
   next();
 });
 
-// Index for efficient querying
 todoSchema.index({ assignedTo: 1, status: 1 });
 todoSchema.index({ assignedBy: 1, status: 1 });
 todoSchema.index({ dueDate: 1, status: 1 });

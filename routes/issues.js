@@ -1,12 +1,10 @@
  
-// routes/issues.js
 const express = require('express');
 const { body } = require('express-validator');
 const { issueController } = require('../controllers/issueController');
 
 const router = express.Router();
 
-// Validation middleware
 const issueValidation = [
   body('title').trim().notEmpty().withMessage('Title is required').isLength({ max: 200 }),
   body('description').optional().isLength({ max: 2000 }),
@@ -22,7 +20,6 @@ const convertToTodoValidation = [
   body('description').optional().isLength({ max: 1000 })
 ];
 
-// Routes
 router.get('/', issueController.getAllIssues);
 router.get('/:id', issueController.getIssueById);
 router.post('/', issueValidation, issueController.createIssue);
@@ -35,6 +32,3 @@ router.put('/:id/move-to-shortterm', issueController.moveToShortTerm);
 
 module.exports = router;
 
-// routes/todos.js
-
-// routes/index.js

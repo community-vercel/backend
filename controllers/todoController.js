@@ -1,10 +1,8 @@
-// controllers/todoController.js
 const { validationResult } = require('express-validator');
 const Issue = require('../models/Issue');
 const ToDo = require('../models/Todo');
 
 const todoController = {
-  // GET /api/todos
   async getAllTodos(req, res) {
     try {
       const { assignedTo, assignedBy, status, page = 1, limit = 50 } = req.query;
@@ -43,7 +41,6 @@ const todoController = {
     }
   },
 
-  // GET /api/todos/:id
   async getTodoById(req, res) {
     try {
       const todo = await ToDo.findById(req.params.id)
@@ -59,7 +56,6 @@ const todoController = {
     }
   },
 
-  // POST /api/todos
   async createTodo(req, res) {
     try {
       const errors = validationResult(req);
@@ -81,7 +77,6 @@ const todoController = {
     }
   },
 
-  // PUT /api/todos/:id
   async updateTodo(req, res) {
     try {
       const errors = validationResult(req);
@@ -105,7 +100,6 @@ const todoController = {
     }
   },
 
-  // DELETE /api/todos/:id
   async deleteTodo(req, res) {
     try {
       const todo = await ToDo.findByIdAndDelete(req.params.id);
@@ -120,7 +114,6 @@ const todoController = {
     }
   },
 
-  // PUT /api/todos/:id/complete
   async completeTodo(req, res) {
     try {
       const todo = await ToDo.findByIdAndUpdate(
